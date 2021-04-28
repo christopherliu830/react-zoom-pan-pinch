@@ -19,6 +19,7 @@ const TransformWrapper = ({
   onPinching,
   onPinchingStop,
   onZoomChange,
+  onTransformChange,
   ...rest
 }: PropsList) => {
   const props = { ...rest };
@@ -43,6 +44,7 @@ const TransformWrapper = ({
       onPinching={onPinching}
       onPinchingStop={onPinchingStop}
       onZoomChange={onZoomChange}
+      onTransformChange={onTransformChange}
     >
       {children}
     </StateProvider>
