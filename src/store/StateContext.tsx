@@ -634,7 +634,7 @@ class StateProvider extends Component<StateContextProps, StateContextState> {
   applyTransformation = (newScale, posX, posY) => {
     if (!this.mounted) return;
     const { contentComponent } = this.state;
-    const { onZoomChange } = this.props;
+    const { onZoomChange, onTransformChange } = this.props;
     const { previousScale, scale, positionX, positionY } = this.stateProvider;
     if (!contentComponent)
       return console.error("There is no content component");
@@ -644,6 +644,7 @@ class StateProvider extends Component<StateContextProps, StateContextState> {
     contentComponent.style.WebkitTransform = transform;
     // force update to inject state to the context
     this.forceUpdate();
+    handleCallback(onTransformChange, this.getCallbackProps());
     if (onZoomChange && previousScale !== scale) {
       handleCallback(onZoomChange, this.getCallbackProps());
     }
